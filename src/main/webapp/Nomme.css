@@ -1,0 +1,146 @@
+/******* General css *******/
+html,body {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	font-size: 18px;
+	font-size: 1.2vw;
+}
+
+body {
+	position: fixed;
+	background-image: url(bg.jpg);
+}
+
+/* table {
+	height: 100%;
+	position: relative;
+}
+
+td {
+	height: 100%;
+} */
+ol {
+	margin: 0px;
+	padding: 0px 0px 0px 0px;
+	list-style-type: none;
+}
+
+li {
+	height: 20%;
+	overflow: hidden;
+	margin-top: 1px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.htmlPanel {
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: -1; /*otherwise it will overlap the font OL layer  */
+	display: block;
+	position: fixed;
+}
+
+/******* Menus *******/
+.mainPanel {
+	
+}
+
+.sideMenus {
+	height: 100%;
+	z-index: 1;
+	display: inline-block;
+	position: absolute;
+	font-size: 1.5vw;
+}
+
+.sideMenus li {
+	display: table;
+	background-color: #25A60A;
+	
+	
+}
+
+.menuItem {
+	color: #A64A0A;
+	width: 100%;
+	height: 100%;
+	border: 1px solid;
+	cursor: pointer;
+	padding: 10px;
+	display: table-cell;
+	text-align: center;
+	font-family: 'Berkshire Swash', cursive;
+	vertical-align: middle;
+}
+
+.menuItem .gwt-Label {
+	vertical-align: middle;
+	text-transform: capitalize;
+}
+/******** CenterMenu ********/
+.centerMenu {
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+	position: absolute;
+	font-size: 5.5vw;
+}
+
+.centerMenu li {
+	width: 100%;
+	display: table;
+	visibility: hidden;
+}
+
+.centerMenuFront {
+	z-index: 2;
+}
+
+.visible {
+	visibility: visible;
+	background-image: url("/slice.jpg");
+	background-repeat: no-repeat;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+/******** Center ********/
+.centerRow {
+	width: 200px;
+	max-width: 800px;
+	margin: auto;
+	display: block;
+	background-color: gray;
+}
+
+.centerSheet {
+	
+}
+
+.textImage {
+	float: right;
+	width: 25vw;
+	height: 25vw;
+	margin-top: 1.8vw;
+	margin-left: 1.5vw;
+	margin-right: 1vw;
+}
+
+.textBox {
+	margin-top: 2vw;
+	padding: 20px;
+	white-space: pre-wrap;
+}

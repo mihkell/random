@@ -1,0 +1,18 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+	.important {
+		font-weight: bold;
+	}
+	
+	.textBox {
+		
+	}
+	</ui:style>
+	<g:HTMLPanel ui:field="htmlPanel">
+		<g:Image ui:field="image" />
+		<g:HTML styleName="{style.textBox}" ui:field="textBox" />
+
+	</g:HTMLPanel>
+</ui:UiBinder> 

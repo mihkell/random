@@ -1,0 +1,32 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:d="urn:import:com.google.gwt.dom.client"
+	xmlns:e="urn:import:eu.nomme.client.activities.ui.extra">
+	<ui:style>
+	.sideMenus {
+		
+	}
+	
+	.left {
+		top: 0px;
+		left: 0px;
+		float: left;
+		z-index: 1;
+	}
+	
+	.right {
+		float: right;
+		right: 0px;
+		top: 0px;
+	}
+	</ui:style>
+	<g:HTMLPanel ui:field="htmlPanel">
+
+		<e:OListPanel ui:field="centerMenu" />
+		<e:OListPanel addStyleNames="{style.sideMenus} {style.left}"
+			ui:field="listLeft" />
+		<e:OListPanel addStyleNames="{style.sideMenus} {style.right}"
+			ui:field="listRight" />
+
+	</g:HTMLPanel>
+</ui:UiBinder> 
