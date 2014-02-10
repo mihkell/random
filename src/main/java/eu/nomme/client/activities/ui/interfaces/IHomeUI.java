@@ -15,5 +15,7 @@ public interface IHomeUI extends IsWidget {
 	void setActivity(IHomeUIAcitvity activity);
 	
 	void setCenterPanel(SimplePanel centerRow);
+	
+	void removeVisible();
 
 }

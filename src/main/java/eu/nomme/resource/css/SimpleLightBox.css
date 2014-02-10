@@ -1,0 +1,26 @@
+@def width 40vw;
+
+
+.htmlPanel{
+	position: relative;
+}
+
+.imageContainer{
+	position: relative;
+}
+
+.thumnail{
+	width: auto;
+	height: 50px;
+}
+
+.thumnailContainer{
+	position: absolute;
+	bottom: 0px;
+	
+}
+
+@external .gwt-PopupPanel;
+.gwt-PopupPanel{
+	width: 40vw; 
+}

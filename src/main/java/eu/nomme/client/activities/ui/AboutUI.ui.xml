@@ -13,6 +13,6 @@
 	<g:HTMLPanel ui:field="htmlPanel">
 		<g:Image ui:field="image" />
 		<g:HTML styleName="{style.textBox}" ui:field="textBox" />
-
+		
 	</g:HTMLPanel>
 </ui:UiBinder> 

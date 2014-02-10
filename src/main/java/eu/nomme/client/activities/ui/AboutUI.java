@@ -3,10 +3,15 @@ package eu.nomme.client.activities.ui;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.ClickListener;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.Image;
+import com.google.gwt.user.client.ui.PopupPanel;
+import com.google.gwt.user.client.ui.SimplePanel;
+import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Widget;
 
 import eu.nomme.client.activities.ui.interfaces.IAboutUI;
@@ -21,10 +26,10 @@ public class AboutUI extends Composite implements IAboutUI {
 	@UiField HTML textBox;
 	
 	@UiField HTMLPanel htmlPanel;
-	
-	@UiField Image image;
 
 	private AboutUIActivity activity;
+
+	@UiField Image image;
 	
 	public AboutUI() {
 		initWidget(uiBinder.createAndBindUi(this));
@@ -40,10 +45,7 @@ public class AboutUI extends Composite implements IAboutUI {
 
 	@Override
 	public void setImageURL(String url) {
-		
 		this.getImage().setUrl(url);
-		
-		
 		
 	}
 

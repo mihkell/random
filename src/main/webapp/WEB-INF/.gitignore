@@ -1,1 +1,4 @@
 /classes
+lib/
+!lib/gwtrpc-spring-1.01.jar
+!lib/spring4gwt-0.0.1.jar

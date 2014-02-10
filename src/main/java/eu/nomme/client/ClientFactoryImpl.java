@@ -5,7 +5,6 @@ import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.web.bindery.event.shared.EventBus;
 import com.google.web.bindery.event.shared.SimpleEventBus;
 
-import eu.nomme.client.activities.HomeActivity;
 import eu.nomme.client.activities.ui.AboutUI;
 import eu.nomme.client.activities.ui.CatalogueUI;
 import eu.nomme.client.activities.ui.HomeUI;
@@ -14,7 +13,6 @@ import eu.nomme.client.activities.ui.interfaces.IAboutUI;
 import eu.nomme.client.activities.ui.interfaces.ICatalogueUI;
 import eu.nomme.client.activities.ui.interfaces.IContactUI;
 import eu.nomme.client.activities.ui.interfaces.IHomeUI;
-import eu.nomme.client.activities.ui.interfaces.IHomeUI.IHomeUIAcitvity;
 import eu.nomme.client.activities.ui.interfaces.IOrderUI;
 
 public class ClientFactoryImpl implements ClientFactory {
@@ -34,9 +32,12 @@ public class ClientFactoryImpl implements ClientFactory {
 	private IOrderUI orderUI = new OrderUI();
 	
 	private IHomeUI homeUI;
+
+	private SimplePanel mainPanel;
 	
-	public ClientFactoryImpl(SimplePanel simplePanel){
+	public ClientFactoryImpl(SimplePanel simplePanel, SimplePanel mainPanel){
 		
+		this.mainPanel = mainPanel;
 		homeUI = new HomeUI(simplePanel);
 		
 	}
@@ -92,4 +93,11 @@ public class ClientFactoryImpl implements ClientFactory {
 		return null;
 	}
 
+
+	/**
+	 * @return the mainPanel
+	 */
+	public SimplePanel getMainPanel() {
+		return mainPanel;
+	}
 }

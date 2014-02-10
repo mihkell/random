@@ -14,15 +14,6 @@ body {
 	position: fixed;
 	background-image: url(bg.jpg);
 }
-
-/* table {
-	height: 100%;
-	position: relative;
-}
-
-td {
-	height: 100%;
-} */
 ol {
 	margin: 0px;
 	padding: 0px 0px 0px 0px;
@@ -68,7 +59,7 @@ li {
 }
 
 .menuItem {
-	color: #A64A0A;
+	color: white;
 	width: 100%;
 	height: 100%;
 	border: 1px solid;
@@ -81,6 +72,7 @@ li {
 }
 
 .menuItem .gwt-Label {
+	text-shadow: 1px 1px #000000;
 	vertical-align: middle;
 	text-transform: capitalize;
 }
@@ -111,9 +103,9 @@ li {
 	visibility: visible;
 	background-image: url("/slice.jpg");
 	background-repeat: no-repeat;
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
 	-o-background-size: cover;
+	-moz-background-size: cover;
+	-webkit-background-size: cover;
 	background-size: cover;
 }
 
@@ -137,6 +129,12 @@ li {
 	margin-top: 1.8vw;
 	margin-left: 1.5vw;
 	margin-right: 1vw;
+}
+
+.textImageSize{
+	width: 25vw;
+	height: 25vw;
+	
 }
 
 .textBox {

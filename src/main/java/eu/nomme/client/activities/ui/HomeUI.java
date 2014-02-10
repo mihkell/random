@@ -1,9 +1,9 @@
 package eu.nomme.client.activities.ui;
 
 import java.util.HashMap;
+import java.util.Map;
 
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.dom.client.Style.Overflow;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.MouseOutEvent;
@@ -24,6 +24,7 @@ import com.google.gwt.user.client.ui.Widget;
 import eu.nomme.client.activities.ui.extra.FlowPanelMouse;
 import eu.nomme.client.activities.ui.extra.OListPanel;
 import eu.nomme.client.activities.ui.interfaces.IHomeUI;
+import eu.nomme.resource.SiteResource;
 
 public class HomeUI extends Composite implements IHomeUI {
 
@@ -52,9 +53,9 @@ public class HomeUI extends Composite implements IHomeUI {
 
 
 	public HomeUI(SimplePanel centerRow) {
-		
+
 		initWidget(uiBinder.createAndBindUi(this));
-		
+
 		this.centerRow = centerRow;
 
 		menuItemBtnSize = Window.getClientWidth()/10;
@@ -64,10 +65,9 @@ public class HomeUI extends Composite implements IHomeUI {
 		configureMenus();
 
 		configureCenterRow();
-		
-
 
 	}
+
 	public void configureMenus(){
 
 		configureCenterMenu();
@@ -101,13 +101,11 @@ public class HomeUI extends Composite implements IHomeUI {
 		centerRow.setWidth((Window.getClientWidth() - menuItemBtnSize * 2) + "px");
 
 		centerRow.addStyleName("centerRow");
-		
+
 		ScrollPanel sPanel = new ScrollPanel(centerRow);
-		
+
 		sPanel.setHeight("100%");
-		
-		//sPanel.getElement().getStyle().setOverflow(Overflow.HIDDEN);
-		
+
 		htmlPanel.add(sPanel);
 
 	}
@@ -124,9 +122,13 @@ public class HomeUI extends Composite implements IHomeUI {
 	public void addCenterMenuItem(final String name){
 
 		final FlowPanelMouse namePanel = new FlowPanelMouse();
+
 		mapCenterMenuItems.put(name, namePanel);
+
 		centerMenu.add(namePanel);
+
 		centerRow.setVisible(true);
+
 		Label label = new Label(name.toLowerCase());
 		namePanel.add(label);
 		namePanel.setStyleName("menuItem");
@@ -142,6 +144,11 @@ public class HomeUI extends Composite implements IHomeUI {
 		namePanel.addClickHandler(new ClickHandler() {
 			@Override
 			public void onClick(ClickEvent event) {
+				event.stopPropagation();
+
+				centerMenu.setStyleName("centerMenuFront", false);
+				namePanel.setStyleName("visible", false);
+
 				if(activity != null) activity.goTo(name);
 				else System.out.println("Activity null");
 			}
@@ -157,6 +164,7 @@ public class HomeUI extends Composite implements IHomeUI {
 
 		final FlowPanelMouse namePanel = new FlowPanelMouse();
 		final Label label = new Label(name.toLowerCase());
+		namePanel.getElement().getStyle().setBackgroundImage("url(" + SiteResource.INSTANCE.testImg().getSafeUri().asString() + ")");
 		namePanel.add(label);
 		namePanel.setWidth(menuItemBtnSize + "px");
 		namePanel.setStyleName("menuItem");
@@ -167,7 +175,7 @@ public class HomeUI extends Composite implements IHomeUI {
 				// makes the horizontal central :menuItem visible.
 				centerMenu.setStyleName("centerMenuFront", true);
 				mapCenterMenuItems.get(name).setStyleName("visible", true);
-				
+
 			}
 		});
 
@@ -187,6 +195,18 @@ public class HomeUI extends Composite implements IHomeUI {
 	@Override
 	public void setCenterPanel(SimplePanel centerRow) {
 		//this.centerRow = centerRow;
+	}
+
+	@Override
+	public void removeVisible() {
+
+		for(Map.Entry<String, FlowPanel> entry: mapCenterMenuItems.entrySet()){
+			entry.getValue().removeStyleName("visible");
+		}
+
+		centerMenu.setStyleName("centerMenuFront", false);
+
+
 	}
 
 
