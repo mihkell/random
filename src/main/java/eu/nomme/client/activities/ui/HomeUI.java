@@ -25,6 +25,7 @@ import eu.nomme.client.activities.ui.extra.FlowPanelMouse;
 import eu.nomme.client.activities.ui.extra.OListPanel;
 import eu.nomme.client.activities.ui.interfaces.IHomeUI;
 import eu.nomme.resource.SiteResource;
+import eu.nomme.resource.SiteResource.Menu;
 
 public class HomeUI extends Composite implements IHomeUI {
 
@@ -43,7 +44,7 @@ public class HomeUI extends Composite implements IHomeUI {
 
 	SimplePanel centerRow;
 
-	@UiField OListPanel centerMenu = new OListPanel();
+	@UiField OListPanel centerMenu;
 
 	private String[] menuNames = {"NOMME", "CATALOGUE", "ORDER", "ABOUT", "CONTACT"};
 
@@ -51,37 +52,25 @@ public class HomeUI extends Composite implements IHomeUI {
 
 	private int menuItemBtnSize;
 
+	private Menu CSS;
+
 
 	public HomeUI(SimplePanel centerRow) {
 
 		initWidget(uiBinder.createAndBindUi(this));
-
+		SiteResource.INSTANCE.menu().ensureInjected();
+		CSS = SiteResource.INSTANCE.menu();
 		this.centerRow = centerRow;
 
 		menuItemBtnSize = Window.getClientWidth()/10;
 
-		htmlPanel.setStyleName("htmlPanel");
-
-		configureMenus();
+		configureSideMenus();
 
 		configureCenterRow();
 
 	}
 
-	public void configureMenus(){
-
-		configureCenterMenu();
-
-		configureSideMenus();
-
-	}
-
-
 	public void configureSideMenus(){
-
-		listLeft.setStylePrimaryName("sideMenus");
-
-		listRight.setStylePrimaryName("sideMenus");
 
 		for( String name : menuNames ){
 
@@ -100,21 +89,13 @@ public class HomeUI extends Composite implements IHomeUI {
 
 		centerRow.setWidth((Window.getClientWidth() - menuItemBtnSize * 2) + "px");
 
-		centerRow.addStyleName("centerRow");
+		centerRow.addStyleName(CSS.centerRow());
 
 		ScrollPanel sPanel = new ScrollPanel(centerRow);
 
 		sPanel.setHeight("100%");
 
 		htmlPanel.add(sPanel);
-
-	}
-
-
-
-	public void configureCenterMenu(){
-
-		centerMenu.addStyleName("centerMenu");
 
 	}
 
@@ -131,13 +112,12 @@ public class HomeUI extends Composite implements IHomeUI {
 
 		Label label = new Label(name.toLowerCase());
 		namePanel.add(label);
-		namePanel.setStyleName("menuItem");
+		namePanel.setStyleName(CSS.menuItem());
 		namePanel.addMouseOutHandler(new MouseOutHandler() {
 
 			@Override
 			public void onMouseOut(MouseOutEvent event) {
-				centerMenu.setStyleName("centerMenuFront", false);
-				namePanel.setStyleName("visible", false);
+				removeVisible();
 			}
 		});
 
@@ -145,9 +125,7 @@ public class HomeUI extends Composite implements IHomeUI {
 			@Override
 			public void onClick(ClickEvent event) {
 				event.stopPropagation();
-
-				centerMenu.setStyleName("centerMenuFront", false);
-				namePanel.setStyleName("visible", false);
+				removeVisible();
 
 				if(activity != null) activity.goTo(name);
 				else System.out.println("Activity null");
@@ -164,17 +142,19 @@ public class HomeUI extends Composite implements IHomeUI {
 
 		final FlowPanelMouse namePanel = new FlowPanelMouse();
 		final Label label = new Label(name.toLowerCase());
-		namePanel.getElement().getStyle().setBackgroundImage("url(" + SiteResource.INSTANCE.testImg().getSafeUri().asString() + ")");
 		namePanel.add(label);
 		namePanel.setWidth(menuItemBtnSize + "px");
-		namePanel.setStyleName("menuItem");
+		namePanel.setStyleName(CSS.menuItem());
+
 		namePanel.addMouseOverHandler(new MouseOverHandler() {
 
 			@Override
 			public void onMouseOver(MouseOverEvent event) {
 				// makes the horizontal central :menuItem visible.
-				centerMenu.setStyleName("centerMenuFront", true);
-				mapCenterMenuItems.get(name).setStyleName("visible", true);
+				if(!activity.getPlace(name)){
+					centerMenu.setStyleName(CSS.centerMenuFront(), true);
+					mapCenterMenuItems.get(name).setStyleName(CSS.visible(), true);
+				}
 
 			}
 		});
@@ -192,6 +172,7 @@ public class HomeUI extends Composite implements IHomeUI {
 	public void setActivity(IHomeUIAcitvity activity) {
 		this.activity = activity;
 	}
+
 	@Override
 	public void setCenterPanel(SimplePanel centerRow) {
 		//this.centerRow = centerRow;
@@ -201,10 +182,10 @@ public class HomeUI extends Composite implements IHomeUI {
 	public void removeVisible() {
 
 		for(Map.Entry<String, FlowPanel> entry: mapCenterMenuItems.entrySet()){
-			entry.getValue().removeStyleName("visible");
+			entry.getValue().removeStyleName(CSS.visible());
 		}
 
-		centerMenu.setStyleName("centerMenuFront", false);
+		centerMenu.setStyleName(CSS.centerMenuFront(), false);
 
 
 	}

@@ -59,7 +59,9 @@ public class SimpleLightBox extends Composite {
 	 * Set images to be displayed.
 	 */
 	public void setImage(String[] imageUrls){
+		
 		thumnailContainer.clear();
+		
 		if(imageUrls != null && imageUrls.length != 0){
 			mainImage.setUrl(imageUrls[0]);
 		}else return;
@@ -68,23 +70,22 @@ public class SimpleLightBox extends Composite {
 			
 			//TODO: check if url.split(".")[0]+ "-thum " + ".jpg" exists
 			Image thum = new Image(url.split("\\.")[0]+ "-thum" + ".jpg");
-			thum.setTitle(url);
 			thum.setStyleName("thumnail");
-			thumClicked(thum);
+			thumClicked(thum, url);
 			thumnailContainer.add(thum);
 			
 			
 		}
 	}
 	
-	private void thumClicked(final Image img){
+	private void thumClicked(final Image img, final String url){
 		
 		img.addClickHandler(new ClickHandler() {
 			
 			@Override
 			public void onClick(ClickEvent event) {
 				
-				mainImage.setUrl(img.getTitle());
+				mainImage.setUrl(url);
 				
 			}
 		});

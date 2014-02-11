@@ -13,12 +13,9 @@ import eu.nomme.client.places.OrderPlace;
 
 public class MenuActivityMapper implements ActivityMapper {
 	
-	private ClientFactory clientFactory;
 	private HomeActivity homeActivity;
 
-
 	public MenuActivityMapper(ClientFactory clientFactory) {
-        this.clientFactory = clientFactory;	
         homeActivity = new HomeActivity(clientFactory);
 	}
 	

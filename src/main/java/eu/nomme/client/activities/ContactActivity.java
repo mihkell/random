@@ -5,7 +5,6 @@ import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
 
 import eu.nomme.client.ClientFactory;
-import eu.nomme.client.activities.ui.AboutUI;
 import eu.nomme.client.activities.ui.interfaces.IAboutUI;
 
 public class ContactActivity extends AbstractActivity {

@@ -6,9 +6,11 @@
 		font-weight: bold;
 	}
 	</ui:style>
-	<g:HTMLPanel ui:field="cHtmlPanel">
-		<g:HTML ui:field="textArea"></g:HTML>
-		<g:VerticalPanel ui:field="gallery" />
+	<ui:with type="eu.nomme.resource.SiteResource" field="res"></ui:with>
+	<g:HTMLPanel addStyleNames="{res.catalogue.htmlPanel}" ui:field="htmlPanel">
+	
+		<g:HTML addStyleNames="{res.catalogue.topText}" ui:field="topText"></g:HTML>
+		<g:VerticalPanel addStyleNames="{res.catalogue.gallery}" ui:field="gallery" />
 		
 	</g:HTMLPanel>
 </ui:UiBinder> 

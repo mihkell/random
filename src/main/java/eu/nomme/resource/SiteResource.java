@@ -14,14 +14,49 @@ public interface SiteResource extends ClientBundle {
 		String thumnail();
 		String thumnailContainer();
 		String width();
+		String mainImage();
 
 	}
 	
 	public interface Catalogue extends CssResource{
 		
+		String categoryName();
+		String htmlPanel();
+		String topText();
+		String gallery();
+		String clippedImage();
+		String itemsList();
+		
+	}
+	public interface Menu extends CssResource{
+		
+		String htmlPanel();
+		String sideMenus();
+		String menuItem();
+		String centerMenu();
+		String centerMenuFront();
+		String visible();
+		String centerRow();
+		
+	}
+	
+	public interface TextContent extends CssResource{
+		
+		String htmlPanel();
+		String textImage();
+		String textImageSize();
+		String textBox();
+		
+		
 	}
 	
 	public static final SiteResource INSTANCE = GWT.create(SiteResource.class);
+	
+	@Source("eu/nomme/resource/css/TextContent.css")
+	TextContent textContent(); 
+	
+	@Source("eu/nomme/resource/css/Nomme.css")
+	Menu menu(); 
 	
 	@Source("eu/nomme/resource/css/Catalogue.css")
 	Catalogue catalogue();
@@ -29,20 +64,8 @@ public interface SiteResource extends ClientBundle {
 	@Source("eu/nomme/resource/css/SimpleLightBox.css")
 	LightBox lightBox();
 	
-	@Source("eu/nomme/resource/img/test.jpg")
-	ImageResource testImg();
-	@Source("eu/nomme/resource/img/test1.jpg")
-	ImageResource testImg1();
-	@Source("eu/nomme/resource/img/test1-thum.jpg")
-	ImageResource testImg1thum();
-	@Source("eu/nomme/resource/img/test2.jpg")
-	ImageResource testImg2();
-	@Source("eu/nomme/resource/img/test2-thum.jpg")
-	ImageResource testImg2thum();
-	@Source("eu/nomme/resource/img/test3.jpg")
-	ImageResource testImg3();
-	@Source("eu/nomme/resource/img/test3-thum.jpg")
-	ImageResource testImg3thum();
+	@Source("eu/nomme/resource/img/about.jpg")
+	ImageResource aboutimg();
 	
 
 }

@@ -19,45 +19,19 @@
 			/WEB-INF/spring-*-context.xml
 		</param-value>
 	</context-param>
-	
-	
+
+
 
 	<!-- <servlet> <servlet-name>EtsyHeroku</servlet-name> <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class> 
 		<load-on-startup>1</load-on-startup> </servlet> -->
 	<servlet>
-		<servlet-name>EtsyHeroku</servlet-name>
+		<servlet-name>Nomme</servlet-name>
 		<servlet-class>org.gwtrpcspring.RemoteServiceDispatcher</servlet-class>
 	</servlet>
-
-	<!-- TODO: Add exclusion filter, so that JS would load and there shouldn't 
-		be url patterns for every service, atleast i don't like it :) -->
 	<servlet-mapping>
-		<servlet-name>EtsyHeroku</servlet-name>
-		<url-pattern>/EtsyHeroku/searchservice</url-pattern>
-		<url-pattern>/EtsyHeroku/register</url-pattern>
-		<url-pattern>/EtsyHeroku/validate</url-pattern>
-		<url-pattern>/EtsyHeroku/login</url-pattern>
-		<url-pattern>/EtsyHeroku/lookup</url-pattern>
-		<url-pattern>/EtsyHeroku/useritems</url-pattern>
-		<url-pattern>/EtsyHeroku/deleteitemrecord</url-pattern>
-		<url-pattern>/EtsyHeroku/deleteitemservice</url-pattern>
+		<servlet-name>Nomme</servlet-name>
+		<url-pattern>/getcontentservice</url-pattern>
 	</servlet-mapping>
-	
-	
-	
-
-	<filter>
-		<filter-name>springRequestFilter</filter-name>
-		<filter-class>org.springframework.web.filter.RequestContextFilter</filter-class>
-	</filter>
-	<filter-mapping>
-		<filter-name>springRequestFilter</filter-name>
-		<url-pattern>/EtsyHeroku/*</url-pattern>
-	</filter-mapping>
-
-	<!-- <filter> <filter-name>requestContextFilter</filter-name> <filter-class>org.springframework.web.filter.RequestContextFilter</filter-class> 
-		</filter> <filter-mapping> <filter-name>requestContextFilter</filter-name> 
-		<servlet-name>EtsyHeroku</servlet-name> Dispatcher Servlet name </filter-mapping> -->
 
 
 	<welcome-file-list>

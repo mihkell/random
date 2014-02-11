@@ -11,12 +11,12 @@ import com.google.gwt.user.client.ui.FocusPanel;
 import eu.nomme.client.ClientFactory;
 import eu.nomme.client.activities.ui.interfaces.IHomeUI;
 import eu.nomme.client.activities.ui.interfaces.IHomeUI.IHomeUIAcitvity;
+import eu.nomme.client.places.MyPlace;
 
 public class HomeActivity extends AbstractActivity implements IHomeUIAcitvity{
 	
 	
 	private ClientFactory clientFactory;
-	private EventBus eventBus;
 	private IHomeUI homeUI;
 
 
@@ -26,8 +26,6 @@ public class HomeActivity extends AbstractActivity implements IHomeUIAcitvity{
 
 	@Override
 	public void start(AcceptsOneWidget panel, EventBus eventBus) {
-		
-		this.eventBus = eventBus;
 		
 		homeUI = clientFactory.getHomeUI();
 		
@@ -55,8 +53,6 @@ public class HomeActivity extends AbstractActivity implements IHomeUIAcitvity{
 		
 		placeName = placeName.toUpperCase()+":"+ placeName.toLowerCase();
 		
-		System.out.println("goTo(" + placeName +")");
-		
 		Place place = clientFactory.getHistoryMapper().getPlace(placeName);
 		if (place == null){
 			
@@ -65,6 +61,20 @@ public class HomeActivity extends AbstractActivity implements IHomeUIAcitvity{
 		}
 		
 		clientFactory.getPlaceController().goTo(place);
+		
+		
+	}
+
+	@Override
+	public boolean getPlace(String name) {
+		
+		MyPlace currentPlace = (MyPlace) clientFactory.getPlaceController().getWhere();
+		
+		if(currentPlace.getPlaceToken().equals(name.toLowerCase()))
+			return true;
+		
+		
+		return false;
 		
 		
 	}

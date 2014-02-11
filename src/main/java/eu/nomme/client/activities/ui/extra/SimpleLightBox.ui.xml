@@ -9,7 +9,7 @@
 	<g:HTMLPanel  addStyleNames="{res.lightBox.htmlPanel}" ui:field="htmlPanel">
 		<g:FlowPanel addStyleNames="{res.lightBox.imageContainer}"
 			ui:field="imageContainer">
-			<g:Image ui:field="mainImage" />
+			<g:Image addStyleNames="{res.lightBox.mainImage}" ui:field="mainImage" />
 			<g:FlowPanel addStyleNames="{res.lightBox.thumnailContainer}"
 				ui:field="thumnailContainer" />
 		</g:FlowPanel>

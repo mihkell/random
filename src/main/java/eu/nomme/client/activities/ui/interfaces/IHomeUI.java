@@ -6,7 +6,10 @@ import com.google.gwt.user.client.ui.SimplePanel;
 public interface IHomeUI extends IsWidget {
 	
 	public interface IHomeUIAcitvity{
+		
 		void goTo(String place);
+		
+		boolean getPlace(String name);
 
 	}
 

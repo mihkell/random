@@ -4,7 +4,9 @@ import com.google.gwt.place.shared.Place;
 import com.google.gwt.place.shared.PlaceTokenizer;
 import com.google.gwt.place.shared.Prefix;
 
-public class AboutPlace extends Place {
+public class AboutPlace extends Place implements MyPlace{
+	
+	static String token = "about";
 	
 	@Prefix("ABOUT")
 	public static class Tokenizer implements PlaceTokenizer<AboutPlace>{
@@ -17,10 +19,15 @@ public class AboutPlace extends Place {
 
 		@Override
 		public String getToken(AboutPlace place) {
-			return "about";
+			return token;
 		}
 		
 		
+	}
+
+	@Override
+	public String getPlaceToken() {
+		return token;
 	}
 
 }

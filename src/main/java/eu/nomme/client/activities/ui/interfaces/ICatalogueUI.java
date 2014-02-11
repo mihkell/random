@@ -9,4 +9,6 @@ public interface ICatalogueUI extends IsWidget{
 		
 	}
 
+	void setTopText(String text);
+	
 }

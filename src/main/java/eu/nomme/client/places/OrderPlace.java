@@ -4,8 +4,10 @@ import com.google.gwt.place.shared.Place;
 import com.google.gwt.place.shared.PlaceTokenizer;
 import com.google.gwt.place.shared.Prefix;
 
-public class OrderPlace extends Place {
+public class OrderPlace extends Place implements MyPlace {
 	
+	
+	static String token = "order";
 	
 	@Prefix("ORDER")
 	public static class Tokenizer implements PlaceTokenizer<OrderPlace>{
@@ -18,11 +20,17 @@ public class OrderPlace extends Place {
 
 		@Override
 		public String getToken(OrderPlace place) {
-			return "order";
+			return token;
 		}
 		
 		
 		
+	}
+
+	@Override
+	public String getPlaceToken() {
+		
+		return token;
 	}
 
 }

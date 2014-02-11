@@ -7,12 +7,10 @@ import com.google.gwt.place.shared.Place;
 import eu.nomme.client.activities.AboutActivity;
 import eu.nomme.client.activities.CatalogueActivity;
 import eu.nomme.client.activities.ContactActivity;
-import eu.nomme.client.activities.HomeActivity;
 import eu.nomme.client.activities.OrderActivity;
 import eu.nomme.client.places.AboutPlace;
 import eu.nomme.client.places.CataloguePlace;
 import eu.nomme.client.places.ContactPlace;
-import eu.nomme.client.places.HomePlace;
 import eu.nomme.client.places.OrderPlace;
 
 

@@ -20,12 +20,13 @@
 		top: 0px;
 	}
 	</ui:style>
-	<g:HTMLPanel ui:field="htmlPanel">
+	<ui:with type="eu.nomme.resource.SiteResource" field="res"></ui:with>
+	<g:HTMLPanel addStyleNames="{res.menu.htmlPanel}" ui:field="htmlPanel">
 
-		<e:OListPanel ui:field="centerMenu" />
-		<e:OListPanel addStyleNames="{style.sideMenus} {style.left}"
+		<e:OListPanel addStyleNames="{res.menu.centerMenu}" ui:field="centerMenu" />
+		<e:OListPanel addStyleNames="{res.menu.sideMenus} {style.left}"
 			ui:field="listLeft" />
-		<e:OListPanel addStyleNames="{style.sideMenus} {style.right}"
+		<e:OListPanel addStyleNames="{res.menu.sideMenus} {style.right}"
 			ui:field="listRight" />
 
 	</g:HTMLPanel>

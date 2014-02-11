@@ -22,6 +22,7 @@ import com.google.gwt.user.client.ui.Widget;
 import eu.nomme.client.activities.ui.extra.SimpleLightBox;
 import eu.nomme.client.activities.ui.interfaces.ICatalogueUI;
 import eu.nomme.resource.SiteResource;
+import eu.nomme.resource.SiteResource.Catalogue;
 
 public class CatalogueUI extends Composite implements ICatalogueUI {
 
@@ -30,73 +31,81 @@ public class CatalogueUI extends Composite implements ICatalogueUI {
 
 	interface CatalogueUIUiBinder extends UiBinder<Widget, CatalogueUI> {
 	}
-	
-	@UiField HTMLPanel cHtmlPanel;
+
+	@UiField HTMLPanel htmlPanel;
 	@UiField VerticalPanel gallery;
-	
+	@UiField HTML topText;
+	private Catalogue CSS;
+
 	public CatalogueUI() {
 		initWidget(uiBinder.createAndBindUi(this));
 		SiteResource.INSTANCE.catalogue().ensureInjected();
-		
-		String[] catNames = {"RingsCategory", "PendantsCategory"};
-		
-		final String[] imageArray = {"test1.jpg","test2.jpg","test3.jpg"};
-		
-		
+		CSS = SiteResource.INSTANCE.catalogue();
+
 		HashMap<String, List<String[]>> map = new HashMap<String, List<String[]>>();
 		List<String[]> list = new ArrayList<String[]>();
+
+		String[] catNames = { "Rings", "Pendants", "Bracelet", "Brooches", "Earrings", "Cufflinks"  };
+
+		final String[] imageArray = { "test1.jpg", "test2.jpg", "test3.jpg" };
+
 		list.add(imageArray);
 		list.add(imageArray);
 		list.add(imageArray);
 		list.add(imageArray);
-		
-		for(String s: catNames){
-			
+
+		for (String s : catNames) {
+
 			map.put(s, list);
-			
+
 		}
-		
-		addCategory(map);
+
+		// gallery.add(new Image("src/main/resources/serverimg.jpg"));
+
+		if (map.size() != 0)
+			addCategory(map);
 
 	}
 
-	public void addCategory(Map<String,List<String[]>> Category){
+	public void setTopText(String text) {
 
-		for(Entry<String, List<String[]>> entry: Category.entrySet()){
+		this.topText.setText(text);
+
+	}
+
+	public void addCategory(Map<String, List<String[]>> Category) {
+
+		for (Entry<String, List<String[]>> entry : Category.entrySet()) {
+
+			HTML categoryName = new HTML(entry.getKey());
+			FlowPanel itemsList = new FlowPanel();
 			
-			HTML catName = new HTML(entry.getKey());
-			FlowPanel catList = new FlowPanel();
-			gallery.add(catName);
-			gallery.add(catList);
-			catName.setWidth("100%");
+			gallery.add(categoryName);
+			gallery.add(itemsList);
 			
-			
-			
-			
-			
-			for(final String[] urlArray: entry.getValue()){
-				
+			categoryName.setStyleName(CSS.categoryName());
+			itemsList.setStyleName(CSS.itemsList());
+
+			for (final String[] urlArray : entry.getValue()) {
+
 				Image img = new Image(urlArray[0]);
-				img.setWidth("200px");
-				catList.add(img);
-				
+				img.setStyleName(CSS.clippedImage());
+				itemsList.add(img);
+
 				img.addClickHandler(new ClickHandler() {
-					
+
 					@Override
 					public void onClick(ClickEvent event) {
 						SimpleLightBox slb = new SimpleLightBox();
 						slb.setImage(urlArray);
-						slb.setPopupWidth("40vw");
 						slb.pop();
-						
+
 					}
 				});
-				
+
 			}
-			
-			
+
 		}
-		
 
 	}
 

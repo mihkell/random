@@ -1,0 +1,25 @@
+@CHARSET "ISO-8859-1";
+
+.htmlPanel {
+	background-color: #eee;
+	padding: 30px 10px;
+}
+
+.textImage {
+	float: right;
+	margin-top: 1.8vw;
+	margin-left: 1.5vw;
+	margin-right: 1vw;
+}
+
+.textImageSize{
+	width: 25vw;
+	height: 25vw;
+	
+}
+
+.textBox {
+	margin-top: 2vw;
+	padding: 20px;
+	white-space: pre-wrap;
+}

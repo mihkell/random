@@ -8,14 +8,11 @@ import com.google.gwt.http.client.RequestCallback;
 import com.google.gwt.http.client.RequestException;
 import com.google.gwt.http.client.Response;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
-import com.google.gwt.user.client.ui.FlowPanel;
-import com.google.gwt.user.client.ui.Image;
 
 import eu.nomme.client.ClientFactory;
 import eu.nomme.client.activities.ui.interfaces.IAboutUI;
-import eu.nomme.client.activities.ui.interfaces.IHomeUI;
 import eu.nomme.client.activities.ui.interfaces.IAboutUI.AboutUIActivity;
-import eu.nomme.client.activities.ui.interfaces.IHomeUI.IHomeUIAcitvity;
+import eu.nomme.resource.SiteResource;
 
 public class AboutActivity extends AbstractActivity implements AboutUIActivity {
 
@@ -26,7 +23,7 @@ public class AboutActivity extends AbstractActivity implements AboutUIActivity {
 	public AboutActivity(ClientFactory clientFactory) {
 		this.clientFactory = clientFactory;
 	}
-
+ 
 	@Override
 	public void start(AcceptsOneWidget panel, EventBus eventBus) {
 		
@@ -35,8 +32,8 @@ public class AboutActivity extends AbstractActivity implements AboutUIActivity {
 		aboutUI = clientFactory.getAboutUI();
 		
 		getText();
-		
-		aboutUI.setImageURL("/bg.jpg");
+	 
+		aboutUI.setImage(SiteResource.INSTANCE.aboutimg());
 
 		panel.setWidget(aboutUI);
 	}
