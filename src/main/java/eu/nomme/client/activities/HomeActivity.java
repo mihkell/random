@@ -22,6 +22,8 @@ public class HomeActivity extends AbstractActivity implements IHomeUIAcitvity{
 
 	public HomeActivity(ClientFactory clientFactory){
 		this.clientFactory = clientFactory;
+		
+		
 	}
 
 	@Override
@@ -30,6 +32,8 @@ public class HomeActivity extends AbstractActivity implements IHomeUIAcitvity{
 		homeUI = clientFactory.getHomeUI();
 		
 		homeUI.setActivity(this);
+		
+		homeUI.setClicked(getPlace());
 		
 		panel.setWidget(homeUI);
 		
@@ -51,22 +55,25 @@ public class HomeActivity extends AbstractActivity implements IHomeUIAcitvity{
 	public void goTo(String placeName) {
 		
 		
-		placeName = placeName.toUpperCase()+":"+ placeName.toLowerCase();
+		String newPlaceName = placeName.toUpperCase()+":"+ placeName.toLowerCase();
 		
-		Place place = clientFactory.getHistoryMapper().getPlace(placeName);
+		Place place = clientFactory.getHistoryMapper().getPlace(newPlaceName);
 		if (place == null){
 			
 			return;
 			
 		}
-		
+		homeUI.setClicked(placeName);
 		clientFactory.getPlaceController().goTo(place);
 		
 		
 	}
 
+	/*
+	 * @return is String name equal to current places token. 
+	 */
 	@Override
-	public boolean getPlace(String name) {
+	public boolean isPlace(String name) {
 		
 		MyPlace currentPlace = (MyPlace) clientFactory.getPlaceController().getWhere();
 		
@@ -76,7 +83,17 @@ public class HomeActivity extends AbstractActivity implements IHomeUIAcitvity{
 		
 		return false;
 		
+	}
+	/*
+	 * Returns the current places token - lowercased.
+	 */
+	public String getPlace(){
+		
+		MyPlace currentPlace = (MyPlace) clientFactory.getPlaceController().getWhere();
+		
+		return currentPlace.getPlaceToken();
+		
 		
 	}
-
+	
 }

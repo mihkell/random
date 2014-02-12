@@ -18,6 +18,7 @@ import com.google.gwt.user.client.ui.PopupPanel;
 import com.google.gwt.user.client.ui.Widget;
 
 import eu.nomme.resource.SiteResource;
+import eu.nomme.resource.SiteResource.LightBox;
 
 public class SimpleLightBox extends Composite {
 
@@ -38,11 +39,14 @@ public class SimpleLightBox extends Composite {
 	@UiField FlowPanel imageContainer;
 
 	private PopupPanel popupPanel;
+
+	private LightBox CSS;
 	
 	
 
 	public SimpleLightBox() {
 		SiteResource.INSTANCE.lightBox().ensureInjected();
+		CSS = SiteResource.INSTANCE.lightBox();
 		this.popupPanel = new PopupPanel();
 		initWidget(uiBinder.createAndBindUi(this));
 		
@@ -70,7 +74,7 @@ public class SimpleLightBox extends Composite {
 			
 			//TODO: check if url.split(".")[0]+ "-thum " + ".jpg" exists
 			Image thum = new Image(url.split("\\.")[0]+ "-thum" + ".jpg");
-			thum.setStyleName("thumnail");
+			thum.setStyleName(CSS.thumnail());
 			thumClicked(thum, url);
 			thumnailContainer.add(thum);
 			

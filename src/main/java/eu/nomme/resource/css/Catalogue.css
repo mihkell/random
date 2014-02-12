@@ -15,6 +15,7 @@
 }
 
 .categoryName {
+	
 	display: block;
 	font-size: 1.5vw;
 	font-family: 'Berkshire Swash', cursive;
@@ -27,6 +28,8 @@
 }
 
 .clippedImage {
+	
+	cursor: pointer;
 	width: 180px;
 	padding: 0.1vw;
 }

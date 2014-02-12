@@ -12,6 +12,7 @@
 		<springVersion>3.2.4.RELEASE</springVersion>
 		<hibernateVersion>3.6.10.Final</hibernateVersion>
 		<webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
 	<dependencies>
@@ -252,6 +253,9 @@
 				<version>${gwtVersion}</version>
 				<executions>
 					<execution>
+						<configuration>
+							<extraJvmArgs>-Dfile.encoding=UTF-8</extraJvmArgs>
+						</configuration>
 						<goals>
 							<goal>clean</goal>
 							<goal>compile</goal>

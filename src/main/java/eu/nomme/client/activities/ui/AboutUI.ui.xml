@@ -9,5 +9,5 @@
 		<g:Image addStyleNames="{res.textContent.textImage}" ui:field="image" />
 		<g:HTML addStyleNames="{res.textContent.textBox}" ui:field="textBox" />
 		
-	</g:HTMLPanel> 
+	</g:HTMLPanel>
 </ui:UiBinder> 

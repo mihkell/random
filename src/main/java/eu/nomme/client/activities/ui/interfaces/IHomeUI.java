@@ -9,7 +9,9 @@ public interface IHomeUI extends IsWidget {
 		
 		void goTo(String place);
 		
-		boolean getPlace(String name);
+		String getPlace();
+
+		boolean isPlace(String name);
 
 	}
 
@@ -20,5 +22,7 @@ public interface IHomeUI extends IsWidget {
 	void setCenterPanel(SimplePanel centerRow);
 	
 	void removeVisible();
+
+	void setClicked(String menuItemName);
 
 }

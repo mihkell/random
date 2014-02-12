@@ -1,0 +1,2 @@
+serviceClass: eu.nomme.client.rpcinterfaces.GetContentService
+path: 69AA05EA306829455153D243686C2E5B.gwt.rpc

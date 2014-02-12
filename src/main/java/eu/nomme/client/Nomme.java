@@ -4,9 +4,14 @@ import com.google.gwt.activity.shared.ActivityManager;
 import com.google.gwt.activity.shared.ActivityMapper;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.core.client.Scheduler;
+import com.google.gwt.event.logical.shared.ResizeEvent;
+import com.google.gwt.event.logical.shared.ResizeHandler;
 import com.google.gwt.place.shared.Place;
 import com.google.gwt.place.shared.PlaceController;
 import com.google.gwt.place.shared.PlaceHistoryHandler;
+import com.google.gwt.user.client.Timer;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.FocusPanel;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.SimplePanel;
@@ -21,6 +26,8 @@ public class Nomme implements EntryPoint {
 	private Place defaultPlace = new HomePlace();
 
 	public void onModuleLoad() {
+
+		onResizePage();
 
 		ClientFactory clientFactory = new ClientFactoryImpl(contentWidget, menuWidget);
 		EventBus eventBus = clientFactory.getEventBus();
@@ -46,6 +53,31 @@ public class Nomme implements EntryPoint {
 		RootPanel.get().add(menuWidget);
 		// Goes to the place represented on URL else default place
 		historyHandler.handleCurrentHistory();
+
+
+	}
+
+	public void onResizePage(){
+
+		Window.addResizeHandler(new ResizeHandler() {
+
+			@Override
+			public void onResize(ResizeEvent event) {
+				resizeTimer.schedule(250);	
+			}
+
+			Timer resizeTimer = new Timer() {  
+				@Override
+				public void run() {
+					System.out.println("WindowResize");
+					Window.Location.reload();
+				}
+			};
+
+
+
+		});
+
 
 	}
 

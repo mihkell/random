@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.dom.client.Element;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.MouseOutEvent;
@@ -125,9 +126,11 @@ public class HomeUI extends Composite implements IHomeUI {
 			@Override
 			public void onClick(ClickEvent event) {
 				event.stopPropagation();
+				
 				removeVisible();
-
+				
 				if(activity != null) activity.goTo(name);
+				
 				else System.out.println("Activity null");
 			}
 		});
@@ -151,7 +154,7 @@ public class HomeUI extends Composite implements IHomeUI {
 			@Override
 			public void onMouseOver(MouseOverEvent event) {
 				// makes the horizontal central :menuItem visible.
-				if(!activity.getPlace(name)){
+				if(!activity.isPlace(name)){
 					centerMenu.setStyleName(CSS.centerMenuFront(), true);
 					mapCenterMenuItems.get(name).setStyleName(CSS.visible(), true);
 				}
@@ -187,10 +190,38 @@ public class HomeUI extends Composite implements IHomeUI {
 
 		centerMenu.setStyleName(CSS.centerMenuFront(), false);
 
-
 	}
 
-
+	//TODO: When clicked change menuitem color
+	public void setClicked(String menuItemName){
+		
+		menuItemName = menuItemName.toLowerCase();
+		
+		for(int i = 0; i < listLeft.getWidgetCount(); i++){
+			
+			Element element = listLeft.getWidget(i).getElement();
+			Element element2 = listRight.getWidget(i).getElement();
+			
+			if(element.hasClassName(CSS.menuItem())){
+				
+				String label = element.getFirstChildElement().getInnerText();
+				
+				if(!element.hasClassName(CSS.clicked()) && label.equals(menuItemName)){
+					element.addClassName(CSS.clicked());
+					element2.addClassName(CSS.clicked());
+				}
+				else{
+					element.removeClassName(CSS.clicked());
+					element2.removeClassName(CSS.clicked());
+				}
+			}
+			
+		}
+		
+		
+		
+		
+	}
 
 
 }

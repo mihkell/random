@@ -31,7 +31,7 @@ public class AboutUI extends Composite implements IAboutUI {
 	public AboutUI() {
 		initWidget(uiBinder.createAndBindUi(this));
 		SiteResource.INSTANCE.textContent().ensureInjected();
-
+  
 	}
 
 	@Override

@@ -1,0 +1,30 @@
+@CHARSET "ISO-8859-1";
+
+.htmlPanel {
+	
+}
+.container {
+	
+	width: 40vw;
+	margin: auto;
+	margin-top: 4vw;
+	text-align: center;
+}
+
+.etsy {
+	display: table;
+	float: left;
+	margin: auto;
+	width: 50%;
+	height: 40vw;
+	background: #FF7700;
+}
+
+.contact {
+	display: table;
+	float: right;
+	width: 50%;
+	height: 40vw;
+	right: 0px;
+	background: #250633;
+}
