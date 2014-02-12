@@ -53,7 +53,7 @@ li {
 
 .sideMenus li {
 	display: table;
-	background-color: #25A60A;
+	background-color: #173B0B;
 	
 	
 }
@@ -104,7 +104,7 @@ li {
 
 .visible {
 	visibility: visible;
-	background-image: url("/slice.jpg");
+	background-color: #250633;
 	background-repeat: no-repeat;
 	-o-background-size: cover;
 	-moz-background-size: cover;
