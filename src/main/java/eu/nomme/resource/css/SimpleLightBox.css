@@ -1,31 +1,52 @@
 @def width 40vw;
-
-
-.htmlPanel{
+.htmlPanel {
 	position: relative;
 }
 
-.imageContainer{
+.imageContainer {
 	position: relative;
 }
 
-.thumnail{
+.thumnail {
 	width: auto;
 	height: 5vw;
+	margin: 0.2vw;
 }
 
-.thumnailContainer{
-	position: absolute;
+.thumnailContainer {
 	bottom: 0px;
-	
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	position: absolute;
+	margin-left: 0.2vw;
 }
 
 @external .gwt-PopupPanel;
-.gwt-PopupPanel{
-	width: 40vw; 
+.gwt-PopupPanel {
+	width: 40vw;
 }
 
-.mainImage{
+.mainImage {
 	width: 40vw;
-	
+}
+
+.backNext {
+	top: 0px;
+	bottom: 0px;
+	width: 30%;
+	opacity: 0.5;
+	position: absolute;
+}
+
+.backBtn {
+	right: 0px;
+	text-align: right;
+}
+
+.nextBtn {
+	left: 0px;
+	text-align: left;
 }

@@ -61,21 +61,18 @@ public class Nomme implements EntryPoint {
 
 		Window.addResizeHandler(new ResizeHandler() {
 
+			Timer resizeTimer = new Timer() {  
+				@Override
+				public void run() {
+					Window.Location.reload();
+				}
+			};
+			
 			@Override
 			public void onResize(ResizeEvent event) {
 				resizeTimer.schedule(250);	
 			}
-
-			Timer resizeTimer = new Timer() {  
-				@Override
-				public void run() {
-					System.out.println("WindowResize");
-					Window.Location.reload();
-				}
-			};
-
-
-
+			
 		});
 
 

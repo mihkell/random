@@ -1,4 +1,6 @@
 target
+src/test/java/eu
+gwt-unitCache
 
 #eclipse conf files
 *.prefs

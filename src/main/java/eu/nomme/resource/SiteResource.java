@@ -16,6 +16,9 @@ public interface SiteResource extends ClientBundle {
 		String thumnailContainer();
 		String width();
 		String mainImage();
+		String backNext();
+		String backBtn();
+		String nextBtn();
 
 	}
 
@@ -58,6 +61,8 @@ public interface SiteResource extends ClientBundle {
 		String etsy();
 		String contact();
 		String container();
+		String text();
+		
 	}
 
 

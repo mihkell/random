@@ -1,18 +1,24 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
-	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:e="urn:import:eu.nomme.client.activities.ui.extra">
 	<ui:style>
 	
 	</ui:style>
-
 	<ui:with type="eu.nomme.resource.SiteResource" field="res"></ui:with>
-	<g:HTMLPanel  addStyleNames="{res.lightBox.htmlPanel}" ui:field="htmlPanel">
+	<g:HTMLPanel addStyleNames="{res.lightBox.htmlPanel}"
+		ui:field="htmlPanel">
 		<g:FlowPanel addStyleNames="{res.lightBox.imageContainer}"
 			ui:field="imageContainer">
 			<g:Image addStyleNames="{res.lightBox.mainImage}" ui:field="mainImage" />
+
+			<e:FlowPanelMouse addStyleNames="{res.lightBox.nextBtn} {res.lightBox.backNext} "
+				ui:field="backBtn" />
+			<e:FlowPanelMouse addStyleNames="{res.lightBox.backBtn} {res.lightBox.backNext}"
+				ui:field="nextBtn" />
 			<g:FlowPanel addStyleNames="{res.lightBox.thumnailContainer}"
 				ui:field="thumnailContainer" />
 		</g:FlowPanel>
+		
 		<g:HTML ui:field="textArea" />
 
 	</g:HTMLPanel>

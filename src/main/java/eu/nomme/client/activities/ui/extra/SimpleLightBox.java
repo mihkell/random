@@ -1,5 +1,7 @@
 package eu.nomme.client.activities.ui.extra;
 
+import java.util.HashMap;
+
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
@@ -35,27 +37,55 @@ public class SimpleLightBox extends Composite {
 	@UiField HTML textArea;
 
 	@UiField Image mainImage;
-	
+
 	@UiField FlowPanel imageContainer;
+
+	@UiField FlowPanelMouse backBtn;
+
+	@UiField FlowPanelMouse nextBtn;
 
 	private PopupPanel popupPanel;
 
 	private LightBox CSS;
-	
-	
+
+	private String activeImg;
+	// For forward and backward movement
+	private SlideImages slideImages = new SlideImages();
 
 	public SimpleLightBox() {
 		SiteResource.INSTANCE.lightBox().ensureInjected();
+
+
+
 		CSS = SiteResource.INSTANCE.lightBox();
+
 		this.popupPanel = new PopupPanel();
+
 		initWidget(uiBinder.createAndBindUi(this));
-		
+
 		mainImageHandlers(mainImage, popupPanel);
-		
+
 		textArea.setText("- Design of the brooch is bent"
 				+ " and combines smooth and rocky surfices. "
 				+ "Tip - looks good on scarf. Designer Tonis Lukats");
 
+		nextBtn.addClickHandler(new ClickHandler() {
+
+			@Override
+			public void onClick(ClickEvent event) {
+				mainImage.setUrl(slideImages.next().getUrl());
+
+			}
+		});
+
+		backBtn.addClickHandler(new ClickHandler() {
+
+			@Override
+			public void onClick(ClickEvent event) {
+				mainImage.setUrl(slideImages.previous().getUrl());
+
+			}
+		});
 
 	}
 
@@ -63,37 +93,42 @@ public class SimpleLightBox extends Composite {
 	 * Set images to be displayed.
 	 */
 	public void setImage(String[] imageUrls){
-		
+
 		thumnailContainer.clear();
-		
+
+		slideImages.newSet(imageUrls);
+
 		if(imageUrls != null && imageUrls.length != 0){
-			mainImage.setUrl(imageUrls[0]);
+			mainImage.setUrl(slideImages.getCurrentImg().getUrl());
 		}else return;
 
-		for(String url: imageUrls){
-			
+		for(int i = 0; i < imageUrls.length; i++){
+
+			String url = imageUrls[i];
+
 			//TODO: check if url.split(".")[0]+ "-thum " + ".jpg" exists
 			Image thum = new Image(url.split("\\.")[0]+ "-thum" + ".jpg");
+			thum.getElement().setAttribute("data-id", ""+i );
 			thum.setStyleName(CSS.thumnail());
-			thumClicked(thum, url);
+			thumClicked(thum, i);
 			thumnailContainer.add(thum);
-			
-			
+
+
 		}
 	}
-	
-	private void thumClicked(final Image img, final String url){
-		
+
+	private void thumClicked(final Image img, final int i){
+
 		img.addClickHandler(new ClickHandler() {
-			
+
 			@Override
 			public void onClick(ClickEvent event) {
-				
-				mainImage.setUrl(url);
-				
+
+				mainImage.setUrl(slideImages.setCurrentImg(i).getUrl());
+
 			}
 		});
-		
+
 	}
 
 
@@ -103,7 +138,7 @@ public class SimpleLightBox extends Composite {
 	 */
 	public void setPopupWidth(String width){
 		mainImage.setWidth(width);
-		
+
 	}
 
 	public void setText(String text){
@@ -111,7 +146,7 @@ public class SimpleLightBox extends Composite {
 	}
 
 	public void pop(){
-		
+
 		final SimpleLightBox slb = this;
 		popupPanel.add(slb);
 		popupPanel.setGlassEnabled(true);
@@ -127,19 +162,19 @@ public class SimpleLightBox extends Composite {
 
 			}
 		});
-		
+
 	}
-	
+
 	private void mainImageHandlers(Image mainImage, final PopupPanel popupPanel){
-		
+
 		mainImage.addLoadHandler(new LoadHandler() {
-			
+
 			@Override
 			public void onLoad(LoadEvent event) {
 				popupPanel.center();
-				
+
 			}
 		});
-		
+
 	}
 }
