@@ -15,7 +15,7 @@
 .etsy {
 	
 	width: 50%;
-	height: 40vw;
+	height: 80vh;
 	margin: auto;
 	display: table;
 	position: absolute;
@@ -25,7 +25,7 @@
 .contact {
 	right: 0px;
 	width: 51%;
-	height: 40vw;
+	height: 80vh;
 	display: table;
 	position: absolute;
 	background: #250633;
