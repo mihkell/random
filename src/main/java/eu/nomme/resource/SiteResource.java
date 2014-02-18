@@ -5,6 +5,7 @@ import com.google.gwt.resources.client.ClientBundle;
 import com.google.gwt.resources.client.CssResource;
 import com.google.gwt.resources.client.ImageResource;
 import com.google.gwt.resources.client.TextResource;
+import com.google.gwt.resources.ext.DefaultExtensions;
 
 public interface SiteResource extends ClientBundle {
 

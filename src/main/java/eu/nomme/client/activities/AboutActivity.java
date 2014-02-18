@@ -9,6 +9,7 @@ import com.google.gwt.http.client.RequestException;
 import com.google.gwt.http.client.Response;
 import com.google.gwt.http.client.URL;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
+import com.google.gwt.http.client.URL;
 
 import eu.nomme.client.ClientFactory;
 import eu.nomme.client.activities.ui.interfaces.IAboutUI;
@@ -40,7 +41,6 @@ public class AboutActivity extends AbstractActivity implements AboutUIActivity {
 	}
 
 	private void getText(){
-		
 		aboutUI.setText(SiteResource.INSTANCE.aboutText().getText());
 	}
 
