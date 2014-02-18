@@ -77,9 +77,9 @@ public class CatalogueUI extends Composite implements ICatalogueUI {
 
 		for (Entry<String, List<String[]>> entry : Category.entrySet()) {
 
-			
-			HTML categoryName = new HTML("<h2>" + entry.getKey() + "</h2>");
+			HTML categoryName = new HTML(entry.getKey());
 			FlowPanel itemsList = new FlowPanel();
+		
 			
 			gallery.add(categoryName);
 			gallery.add(itemsList);

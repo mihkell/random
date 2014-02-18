@@ -10,6 +10,7 @@ import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Widget;
 
+
 import eu.nomme.client.activities.ui.interfaces.IAboutUI;
 import eu.nomme.resource.SiteResource;
 

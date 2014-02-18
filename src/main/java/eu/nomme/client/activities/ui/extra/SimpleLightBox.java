@@ -1,7 +1,5 @@
 package eu.nomme.client.activities.ui.extra;
 
-import java.util.HashMap;
-
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
@@ -47,8 +45,6 @@ public class SimpleLightBox extends Composite {
 	private PopupPanel popupPanel;
 
 	private LightBox CSS;
-
-	private String activeImg;
 	// For forward and backward movement
 	private SlideImages slideImages = new SlideImages();
 
