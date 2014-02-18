@@ -19,7 +19,8 @@
 }
 
 .textBox {
-	margin-top: 2vw;
+	
 	padding: 20px;
+	margin-top: 2vw;
 	white-space: pre-wrap;
 }

@@ -16,6 +16,10 @@ body {
 	background-image: url(bg.jpg);
 }
 
+h2{
+	font-size: 1.2em;
+}
+
 ol {
 	margin: 0px;
 	padding: 0px 0px 0px 0px;
@@ -116,10 +120,11 @@ li {
 .centerRow {
 	
 	margin: auto;
-	display: block;
 	max-width: 70%;
+	padding-left: 16px;
 }
 
+/* color of menuitem, when clicked  */
 .clicked{
 	background-color: #250633;
 	
