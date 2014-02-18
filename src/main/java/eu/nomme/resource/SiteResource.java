@@ -24,10 +24,14 @@ public interface SiteResource extends ClientBundle {
 
 	public interface Catalogue extends CssResource{
 
-		String categoryName();
 		String htmlPanel();
 		String topText();
 		String gallery();
+
+	}
+	public interface CatalogueRowCss extends CssResource{
+
+		String categoryName();
 		String clippedImage();
 		String itemsList();
 
@@ -79,6 +83,9 @@ public interface SiteResource extends ClientBundle {
 
 	@Source("eu/nomme/resource/css/Catalogue.css")
 	Catalogue catalogue();
+	
+	@Source("eu/nomme/resource/css/CatalogueRow.css")
+	CatalogueRowCss catalogueRow();
 
 	@Source("eu/nomme/resource/css/SimpleLightBox.css")
 	LightBox lightBox();

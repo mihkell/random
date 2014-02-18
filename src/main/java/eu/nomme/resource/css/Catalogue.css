@@ -13,23 +13,3 @@
 	margin: auto;
 	margin-top: 7px;
 }
-
-.categoryName {
-	
-	display: block;
-	font-size: 1.5vw;
-	font-family: 'Berkshire Swash', cursive;
-	border-bottom: 2px solid gray;
-	
-}
-
-.itemsList {
-	margin-top: 4px;
-}
-
-.clippedImage {
-	
-	cursor: pointer;
-	width: 180px;
-	padding: 0.1vw;
-}

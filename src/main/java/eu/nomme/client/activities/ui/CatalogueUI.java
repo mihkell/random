@@ -12,13 +12,13 @@ import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Composite;
-import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Widget;
 
+import eu.nomme.client.activities.ui.extra.CatalogueRow;
 import eu.nomme.client.activities.ui.extra.SimpleLightBox;
 import eu.nomme.client.activities.ui.interfaces.ICatalogueUI;
 import eu.nomme.resource.SiteResource;
@@ -69,7 +69,7 @@ public class CatalogueUI extends Composite implements ICatalogueUI {
 
 	public void setTopText(String text) {
 
-		this.topText.setText(text);
+		this.topText.setText(text); 
 
 	}
 
@@ -77,34 +77,36 @@ public class CatalogueUI extends Composite implements ICatalogueUI {
 
 		for (Entry<String, List<String[]>> entry : Category.entrySet()) {
 
-			HTML categoryName = new HTML(entry.getKey());
-			FlowPanel itemsList = new FlowPanel();
-		
+			CatalogueRow row = new CatalogueRow(entry.getKey());
 			
-			gallery.add(categoryName);
-			gallery.add(itemsList);
-			
-			categoryName.setStyleName(CSS.categoryName());
-			itemsList.setStyleName(CSS.itemsList());
-
 			for (final String[] urlArray : entry.getValue()) {
 
 				Image img = new Image(urlArray[0]);
-				img.setStyleName(CSS.clippedImage());
-				itemsList.add(img);
-
-				img.addClickHandler(new ClickHandler() {
-
-					@Override
-					public void onClick(ClickEvent event) {
-						SimpleLightBox slb = new SimpleLightBox();
-						slb.setImage(urlArray);
-						slb.pop();
-
-					}
-				});
-
+				
+				img.addClickHandler(new ImgClickHandler(urlArray));
+				
+				row.addImage(img);
 			}
+			
+			gallery.add(row);
+
+		}
+
+	}
+
+	class ImgClickHandler implements ClickHandler{
+
+		private String[] imgURL;
+
+		public ImgClickHandler(String[] imgURL) {
+			this.imgURL = imgURL;
+		}
+		
+		@Override
+		public void onClick(ClickEvent event) {
+			SimpleLightBox slb = new SimpleLightBox();
+			slb.setImage(imgURL);
+			slb.pop();
 
 		}
 

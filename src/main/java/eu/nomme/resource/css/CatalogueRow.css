@@ -1,0 +1,21 @@
+@CHARSET "ISO-8859-1";
+
+
+.categoryName {
+	
+	display: block;
+	font-size: 1.5vw;
+	font-family: 'Berkshire Swash', cursive;
+	
+}
+
+.itemsList {
+	margin-top: 4px;
+}
+
+.clippedImage {
+	
+	cursor: pointer;
+	width: 20vw;
+	padding: 0.1vw;
+}
